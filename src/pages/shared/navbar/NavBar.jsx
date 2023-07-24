@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaBars, FaWindowClose } from 'react-icons/fa';
 
 const NavBar = () => {
   const [show, setShow] = useState(false);
   return (
-    <div className="navbar bg-base-300">
+    <div className="navbar bg-base-300 px-6 md:px-10">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <a className="btn btn-ghost normal-case text-xl">Student<span className="text-pink-700">Services</span></a>
       </div>
       <div className="flex-none">
         <div className="navbar-center hidden md:flex">
@@ -22,6 +23,9 @@ const NavBar = () => {
             </li>
             <li>
             <Link to='/myCollege'>My College</Link>
+            </li>
+            <li>
+            <Link to='/login'>Login</Link>
             </li>
           </ul>
         </div>
@@ -50,13 +54,13 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="text-3xl ml-10 md:hidden">
-        {show ? <span onClick={()=>setShow(!show)} className="">x</span> : <span onClick={()=>setShow(!show)} className="">=</span>}
+        {show ? <span onClick={()=>setShow(!show)} className=""><FaWindowClose /></span> : <span onClick={()=>setShow(!show)} className=""><FaBars /></span>}
         </div>
       </div>
-      {show && <div className="bg-gray-500 text-white absolute top-0 right-0 bottom-0 left-16">
+      {show && <div className="bg-gray-500 z-50 text-white md:hidden fixed top-0 right-0 bottom-0 left-16">
         <div className="w-1/2 mx-auto">
-          <div className="absolute top-6 right-6">
-          {show && <span onClick={()=>setShow(!show)} className="">x</span>}
+          <div className="absolute top-6 right-6 text-3xl">
+          {show && <span onClick={()=>setShow(!show)} className=""><FaWindowClose /></span>}
           </div>
           <ul className="menu  px-1 absolute top-16">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
